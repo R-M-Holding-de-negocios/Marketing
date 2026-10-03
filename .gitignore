@@ -1,0 +1,40 @@
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+credentials*
+secrets*
+*.secret
+*.secrets
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+.aws/
+.ssh/
+.npmrc
+.netrc
+
+# Private documents and personal data: keep these in the folders below
+private/
+personal/
+pessoal/
+dados-pessoais/
+
+# Local editor, agent and deployment settings
+.vscode/
+.idea/
+*.code-workspace
+.codex/
+.agents/
+.vercel/
+
+# Dependencies, logs and operating system files
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini
