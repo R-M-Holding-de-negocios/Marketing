@@ -31,3 +31,28 @@ summary:after,.checklist li:before{flex-shrink:0}
  .button{padding:14px 16px}
  .offer-panel{padding:24px 16px}
 }
+/* Persistent timer: reserve its measured height before sliding it into view. */
+:root{--future-banner-height:0px}
+body{padding-top:var(--future-banner-height)}
+html{scroll-padding-top:calc(85px + var(--future-banner-height))}
+.future-banner{position:fixed;inset:0 0 auto;z-index:1000;background:#b91c1c;color:#fff;transform:translateY(-100%);transition:transform 600ms cubic-bezier(.22,1,.36,1);padding-top:env(safe-area-inset-top,0px)}
+.future-banner[hidden]{display:none}
+.future-banner-visible .future-banner{transform:translateY(0)}
+.future-banner-content{display:flex;align-items:center;justify-content:center;gap:24px;padding:12px 24px}
+.future-banner-message{min-width:0;margin:0;font-size:16px;font-weight:600;line-height:1.4;text-align:center;overflow-wrap:anywhere}
+.future-message-mobile{display:none}
+.future-timer{flex:0 0 auto;color:#ffe66d;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.25;white-space:nowrap}
+.future-timer-digits{display:flex;align-items:center}
+.future-digit{position:relative;display:inline-block;width:1ch;height:1.25em;overflow:hidden;mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
+.future-counter-wheel{position:absolute;top:0;left:0;width:100%;display:flex;flex-direction:column}
+.future-counter-number{display:flex;align-items:center;justify-content:center;flex:0 0 1.25em;height:1.25em;line-height:1}
+.future-digit.is-changing .future-counter-wheel{transition:transform 550ms cubic-bezier(.22,1,.36,1);will-change:transform}
+.future-timer-colon{display:inline-block}
+@media(max-width:760px){
+ .future-banner-content{gap:12px;padding:8px 12px}
+ .future-banner-message{font-size:12px;line-height:1.25;text-align:left}
+ .future-message-desktop{display:none}
+ .future-message-mobile{display:inline}
+ .future-timer{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){.future-banner,.future-digit>span{transition:none!important}}
